@@ -153,8 +153,9 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
   const [selectedContacts, setSelectedContacts] = useState<string[]>([]);
   const [activeReactionMsgId, setActiveReactionMsgId] = useState<string | null>(null);
 
-  // Search in tuning list
+  // Search in tuning list & home
   const [chatSearchQuery, setChatSearchQuery] = useState<string>('');
+  const [homeSearchQuery, setHomeSearchQuery] = useState<string>('');
 
   // Long press / Action modal state for contacts
   const [actionContact, setActionContact] = useState<FriendContact | null>(null);
@@ -666,22 +667,145 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
                 </div>
               </div>
 
-              {/* Category Filter Chips */}
-              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-                {['All', 'Music', 'Podcasts'].map((cat) => (
+              {/* Home Search Bar */}
+              <div className="relative">
+                <Search className={`w-4 h-4 absolute left-3.5 top-3 ${isDark ? 'text-neutral-400' : 'text-slate-400'}`} />
+                <input
+                  type="text"
+                  placeholder="Search songs, artists, or albums..."
+                  value={homeSearchQuery}
+                  onChange={(e) => setHomeSearchQuery(e.target.value)}
+                  className={`w-full rounded-2xl py-2.5 pl-10 ${homeSearchQuery ? 'pr-9' : 'pr-4'} text-xs font-medium outline-none transition border ${
+                    isDark
+                      ? 'bg-neutral-900 border-neutral-800 text-white placeholder-neutral-500 focus:border-sky-400'
+                      : 'bg-white border-sky-200 text-slate-900 placeholder-slate-400 focus:border-sky-500 shadow-sm'
+                  }`}
+                />
+                {homeSearchQuery && (
                   <button
-                    key={cat}
-                    onClick={() => setCategoryFilter(cat)}
-                    className={`px-5 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap ${
-                      categoryFilter === cat
-                        ? 'bg-sky-500 text-white font-bold shadow-md shadow-sky-500/25'
-                        : (isDark ? 'bg-neutral-800/80 text-neutral-300 hover:bg-neutral-700' : 'bg-white text-slate-700 hover:bg-sky-100 border border-sky-100')
+                    onClick={() => setHomeSearchQuery('')}
+                    className={`absolute right-3 top-2.5 p-0.5 rounded-full transition ${
+                      isDark ? 'text-neutral-400 hover:text-white hover:bg-neutral-800' : 'text-slate-400 hover:text-slate-700 hover:bg-sky-100'
                     }`}
+                    title="Clear search"
                   >
-                    {cat}
+                    <X className="w-3.5 h-3.5" />
                   </button>
-                ))}
+                )}
               </div>
+
+              {/* Live Search Results or Category Carousels */}
+              {homeSearchQuery.trim() ? (
+                <div className="space-y-4 pt-1">
+                  <div className="flex items-center justify-between">
+                    <h2 className={`text-xs sm:text-sm font-bold ${isDark ? 'text-neutral-300' : 'text-slate-700'}`}>
+                      Search Results for "{homeSearchQuery}"
+                    </h2>
+                    <span className={`text-[11px] font-semibold ${isDark ? 'text-sky-400' : 'text-sky-600'}`}>
+                      {
+                        songs.filter((s) => {
+                          const q = homeSearchQuery.trim().toLowerCase();
+                          return (
+                            s.title.toLowerCase().includes(q) ||
+                            s.artist.toLowerCase().includes(q) ||
+                            s.album.toLowerCase().includes(q) ||
+                            s.genre?.toLowerCase().includes(q)
+                          );
+                        }).length
+                      } songs found
+                    </span>
+                  </div>
+
+                  {(() => {
+                    const q = homeSearchQuery.trim().toLowerCase();
+                    const matchedSongs = songs.filter((s) =>
+                      s.title.toLowerCase().includes(q) ||
+                      s.artist.toLowerCase().includes(q) ||
+                      s.album.toLowerCase().includes(q) ||
+                      s.genre?.toLowerCase().includes(q)
+                    );
+
+                    if (matchedSongs.length === 0) {
+                      return (
+                        <div className="py-12 text-center space-y-2">
+                          <div className={`w-12 h-12 rounded-full mx-auto flex items-center justify-center ${isDark ? 'bg-neutral-900 text-neutral-400 border border-neutral-800' : 'bg-sky-100 text-sky-600 border border-sky-200'}`}>
+                            <Search className="w-6 h-6" />
+                          </div>
+                          <p className={`text-xs font-bold ${isDark ? 'text-neutral-300' : 'text-slate-800'}`}>
+                            No songs match "{homeSearchQuery}"
+                          </p>
+                          <p className={`text-[11px] ${isDark ? 'text-neutral-500' : 'text-slate-400'}`}>
+                            Try typing another song title, artist name, or letter.
+                          </p>
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <div className="grid grid-cols-1 gap-2">
+                        {matchedSongs.map((song) => {
+                          const isCurrent = currentSong?.id === song.id;
+                          return (
+                            <div
+                              key={song.id}
+                              onClick={() => onPlaySong(song)}
+                              className={`p-2.5 rounded-2xl border cursor-pointer transition flex items-center justify-between gap-3 group ${
+                                isCurrent
+                                  ? (isDark ? 'bg-sky-950/60 border-sky-500/50' : 'bg-sky-100 border-sky-300')
+                                  : (isDark ? 'bg-neutral-900/80 border-neutral-800/80 hover:border-sky-500/40' : 'bg-white border-sky-100 hover:border-sky-300 shadow-sm')
+                              }`}
+                            >
+                              <div className="flex items-center gap-3 min-w-0 flex-1">
+                                <div className="w-12 h-12 rounded-xl overflow-hidden relative shrink-0 shadow">
+                                  <img src={song.coverUrl} alt={song.title} className="w-full h-full object-cover group-hover:scale-105 transition" />
+                                  <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition ${isCurrent ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                    <div className="w-7 h-7 rounded-full bg-sky-500 text-white flex items-center justify-center shadow">
+                                      {isCurrent && isPlaying ? <Pause className="w-3.5 h-3.5 fill-white" /> : <Play className="w-3.5 h-3.5 fill-white translate-x-0.5" />}
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <p className={`text-xs font-bold truncate ${isCurrent ? 'text-sky-500' : (isDark ? 'text-white' : 'text-slate-900')}`}>
+                                    {song.title}
+                                  </p>
+                                  <p className={`text-[10px] truncate ${isDark ? 'text-neutral-400' : 'text-slate-500'}`}>
+                                    {song.artist} • {song.album}
+                                  </p>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-2 shrink-0">
+                                <span className={`text-[10px] font-mono ${isDark ? 'text-neutral-500' : 'text-slate-400'}`}>
+                                  {formatTimeStr(song.duration)}
+                                </span>
+                                <div className="w-7 h-7 rounded-full bg-sky-500/10 text-sky-500 flex items-center justify-center">
+                                  {isCurrent && isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 translate-x-0.5" />}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
+                </div>
+              ) : (
+                <>
+                  {/* Category Filter Chips */}
+                  <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                    {['All', 'Music', 'Podcasts'].map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => setCategoryFilter(cat)}
+                        className={`px-5 py-1.5 rounded-full text-xs font-semibold transition whitespace-nowrap ${
+                          categoryFilter === cat
+                            ? 'bg-sky-500 text-white font-bold shadow-md shadow-sky-500/25'
+                            : (isDark ? 'bg-neutral-800/80 text-neutral-300 hover:bg-neutral-700' : 'bg-white text-slate-700 hover:bg-sky-100 border border-sky-100')
+                        }`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
 
               {/* Conditional Content based on Category Filter */}
               {(categoryFilter === 'All' || categoryFilter === 'Music') && (
@@ -766,6 +890,8 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
                   </div>
                 </div>
               )}
+                </>
+              )}
             </div>
           </div>
 
@@ -801,23 +927,64 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
                 <Search className={`w-4 h-4 absolute left-3.5 top-3 ${isDark ? 'text-neutral-400' : 'text-slate-400'}`} />
                 <input
                   type="text"
-                  placeholder="Search conversations..."
+                  placeholder="Search chats or song names..."
                   value={chatSearchQuery}
                   onChange={(e) => setChatSearchQuery(e.target.value)}
-                  className={`w-full rounded-2xl py-2.5 pl-10 pr-4 text-xs font-medium outline-none transition border ${
+                  className={`w-full rounded-2xl py-2.5 pl-10 ${chatSearchQuery ? 'pr-9' : 'pr-4'} text-xs font-medium outline-none transition border ${
                     isDark
                       ? 'bg-neutral-900 border-neutral-800 text-white placeholder-neutral-500 focus:border-sky-400'
                       : 'bg-white border-sky-200 text-slate-900 placeholder-slate-400 focus:border-sky-500 shadow-sm'
                   }`}
                 />
+                {chatSearchQuery && (
+                  <button
+                    onClick={() => setChatSearchQuery('')}
+                    className={`absolute right-3 top-2.5 p-0.5 rounded-full transition ${
+                      isDark ? 'text-neutral-400 hover:text-white hover:bg-neutral-800' : 'text-slate-400 hover:text-slate-700 hover:bg-sky-100'
+                    }`}
+                    title="Clear search"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
               </div>
 
               {/* Contacts List */}
               <div className="space-y-1">
-                {contacts
-                  .filter((c) => !deletedContactIds.includes(c.id) && !archivedContactIds.includes(c.id))
-                  .filter((c) => c.name.toLowerCase().includes(chatSearchQuery.toLowerCase()))
-                  .map((contact) => (
+                {(() => {
+                  const query = chatSearchQuery.toLowerCase().trim();
+                  const filtered = contacts
+                    .filter((c) => !deletedContactIds.includes(c.id) && !archivedContactIds.includes(c.id))
+                    .filter((c) => {
+                      if (!query) return true;
+                      const nameMatch = c.name.toLowerCase().includes(query);
+                      const trackMatch = c.currentTrack?.toLowerCase().includes(query);
+                      const msgs = messagesByContact[c.id] || [];
+                      const msgMatch = msgs.some(
+                        (m) =>
+                          m.songTitle.toLowerCase().includes(query) ||
+                          m.artistAlbum.toLowerCase().includes(query)
+                      );
+                      return nameMatch || trackMatch || msgMatch;
+                    });
+
+                  if (filtered.length === 0) {
+                    return (
+                      <div className="py-8 text-center space-y-2">
+                        <div className={`w-11 h-11 rounded-full mx-auto flex items-center justify-center ${isDark ? 'bg-neutral-900 text-neutral-400 border border-neutral-800' : 'bg-sky-100 text-sky-600 border border-sky-200'}`}>
+                          <Search className="w-5 h-5" />
+                        </div>
+                        <p className={`text-xs font-bold ${isDark ? 'text-neutral-300' : 'text-slate-800'}`}>
+                          No chats found for "{chatSearchQuery}"
+                        </p>
+                        <p className={`text-[11px] ${isDark ? 'text-neutral-500' : 'text-slate-400'}`}>
+                          Try searching for a friend's name or a song title.
+                        </p>
+                      </div>
+                    );
+                  }
+
+                  return filtered.map((contact) => (
                     <div
                       key={contact.id}
                       onClick={() => {
@@ -880,7 +1047,8 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
                         </button>
                       </div>
                     </div>
-                  ))}
+                  ));
+                })()}
               </div>
             </div>
           </div>
