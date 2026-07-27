@@ -1,0 +1,6 @@
+{
+  "name": "Spotify SoundRoom & Chat",
+  "description": "Spotify-inspired music player with live music room chat, synchronized listening, lyrics, and AI music assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
