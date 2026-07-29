@@ -1,29 +1,79 @@
-# Tuning — Speak in Songs
+# 🎵 Tuning — A Musical Language for Social Communication
 
-A social music sharing concept for Spotify — share songs with friends, react to them, and chat about music together in one place, instead of dropping a bare link with no context.
+> *What if music was your message?*
 
-## Why I built this
+**Tuning** is a social communication layer built on top of the Spotify ecosystem — replacing typed messages with shared song moments, emoji reactions, and lyric timestamps.
 
-Sharing a song today usually means pasting a link into a chat with no real space to talk about *why* you shared it. Tuning is a product concept for a music-native social layer: friends share songs into a feed, react, and keep the conversation about the music itself — album art, lyrics, and comments in one connected experience instead of an ordinary chat thread.
+🔗 **Live Prototype:** [ashokkumarone.github.io/Tuning-Music](https://ashokkumarone.github.io/Tuning-Music/)
 
-## Key Features
+---
 
-- **Home feed** — browse curated song categories (Trending, Chill, High Energy, Hip Hop, Fresh Discoveries) and podcasts
-- **Song search** — search songs by title or artist directly from the home screen
-- **Tuning conversations** — friend chats centered around shared songs, with reactions and comments
-- **Now Playing view** — album art, lyrics, and playback controls
-- **Settings** — audio quality, equalizer presets, theme, and account preferences
+## 🚨 The Problem
 
-## Tech Stack
+Music apps today are socially silent.
 
-- React 19 + TypeScript
-- Tailwind CSS
-- Vite
+| Pain Point | Reality |
+|---|---|
+| You discover a song that perfectly describes how you feel | You can only share a link |
+| You want to react to a friend's song share | No reaction system exists |
+| You want to say *"this exact line is for you"* | You screenshot and send it manually |
+| You want to express emotion without typing | No keyboard-free communication exists |
 
-## Status
+---
 
-This is a front-end prototype built to demonstrate product thinking and UX design — it runs on mock data with no backend, and song playback uses publicly hosted demo audio files for demonstration purposes only.
+## 💡 The Solution
 
-## Live Demo
+Tuning adds three core features on top of the streaming experience:
 
-[https://ashokkumarone.github.io/Tuning-Music/](https://ashokkumarone.github.io/Tuning-Music/)
+1. **🎶 Song Share as a Message** — send a song *as* an intent via a "Chat via Tuning" option, not just a link
+2. **😄 Emoji Reactions** — react to any shared song without typing, keeping friction low
+3. **⏱️ Timestamp Sharing (Pro)** — highlight a specific lyric line; playback starts exactly there for the receiver
+
+---
+
+## 👥 Who Is It For?
+
+| User Type | How They Use Tuning |
+|---|---|
+| **Couples** | Share songs that say what words can't |
+| **Friends** | Send hype tracks, react to each other's picks |
+| **Anyone** | Express moods and memories through music |
+
+---
+
+## 💎 Freemium Model
+
+| Feature | Free | Pro |
+|---|---|---|
+| Song Share | ✅ | ✅ |
+| Emoji Reactions | ✅ | ✅ |
+| Shared Chat Wallpaper | ✅ | ✅ |
+| Timestamp Sharing | ❌ | ✅ |
+| Emotion Buckets | ❌ | ✅ |
+| Ad-Free Experience | ❌ | ✅ |
+
+Free features drive engagement and growth; Pro features convert power users who want deeper expression.
+
+---
+
+## 🗺️ Future Scope
+
+- **Group Tuning** — share a song to a group, everyone reacts simultaneously
+- **Mood Playlists** — auto-generate playlists from Tuning history
+- **Spotify Wrapped Integration** — "songs you sent most this year"
+- **Now Playing Visibility** — see what friends are listening to live
+
+---
+
+## 🛠️ Tech
+
+Built with Vite + TypeScript + React.
+
+## 📄 Docs
+
+- [Product Requirements & KPI Document](./Tuning_Product_Requirements.md) — goals, user stories, features, metrics & targets
+- [Database Schema](./schema.sql) — data model for Users, Songs_Meta, and Tuning_Logs
+
+---
+
+*This is a product concept portfolio project. Not affiliated with Spotify AB.*
