@@ -1,79 +1,98 @@
 # 🎵 Tuning — A Musical Language for Social Communication
-
 > *What if music was your message?*
 
-**Tuning** is a social communication layer built on top of the Spotify ecosystem — replacing typed messages with shared song moments, emoji reactions, and lyric timestamps.
-
-🔗 **Live Prototype:** [ashokkumarone.github.io/Tuning-Music](https://ashokkumarone.github.io/Tuning-Music/)
-
----
-
-## 🚨 The Problem
-
-Music apps today are socially silent.
-
-| Pain Point | Reality |
-|---|---|
-| You discover a song that perfectly describes how you feel | You can only share a link |
-| You want to react to a friend's song share | No reaction system exists |
-| You want to say *"this exact line is for you"* | You screenshot and send it manually |
-| You want to express emotion without typing | No keyboard-free communication exists |
+[![Live Demo](https://img.shields.io/badge/Live_Prototype-ashokkumarone.github.io-success?style=for-the-badge&logo=googlechrome)](https://ashokkumarone.github.io/Tuning-Music/)
+[![Tech Stack](https://img.shields.io/badge/Stack-React_19_|_TypeScript_|_Tailwind_|_Motion-61DAFB?style=for-the-badge&logo=react)](https://github.com/ashokkumarone/Tuning-Music)
+[![Product Document](https://img.shields.io/badge/PRD-Product_Requirements_&_KPIs-orange?style=for-the-badge&logo=googledocs)](./Tuning_Product_Requirements.md)
 
 ---
 
-## 💡 The Solution
+## 📌 Executive Summary
+**Tuning** is a social communication layer built on top of the Spotify streaming ecosystem. Instead of forcing users out of their listening experience to copy-paste links into WhatsApp or Instagram, Tuning turns songs, timestamped lyrics, and lightweight emoji reactions into primary communication units.
 
-Tuning adds three core features on top of the streaming experience:
-
-1. **🎶 Song Share as a Message** — send a song *as* an intent via a "Chat via Tuning" option, not just a link
-2. **😄 Emoji Reactions** — react to any shared song without typing, keeping friction low
-3. **⏱️ Timestamp Sharing (Pro)** — highlight a specific lyric line; playback starts exactly there for the receiver
+Built as a high-fidelity interactive mobile prototype using **React 19, TypeScript, and Motion**, accompanied by an industry-standard **Product Requirements Document (PRD)** and **SQL Schema**.
 
 ---
 
-## 👥 Who Is It For?
+## 🚨 The Friction: Why Music Sharing is Broken Today
 
-| User Type | How They Use Tuning |
-|---|---|
-| **Couples** | Share songs that say what words can't |
-| **Friends** | Send hype tracks, react to each other's picks |
-| **Anyone** | Express moods and memories through music |
-
----
-
-## 💎 Freemium Model
-
-| Feature | Free | Pro |
-|---|---|---|
-| Song Share | ✅ | ✅ |
-| Emoji Reactions | ✅ | ✅ |
-| Shared Chat Wallpaper | ✅ | ✅ |
-| Timestamp Sharing | ❌ | ✅ |
-| Emotion Buckets | ❌ | ✅ |
-| Ad-Free Experience | ❌ | ✅ |
-
-Free features drive engagement and growth; Pro features convert power users who want deeper expression.
+| Existing Friction | Current User Workaround | Tuning's Native Solution |
+| :--- | :--- | :--- |
+| **Silent Share Links** | User copies URL, leaves Spotify, pastes link in WhatsApp | One-tap **"Chat via Tuning"** drawer inside the listening experience |
+| **Context Loss** | Receiver clicks link, opens app, loses whatever they were listening to | **Non-destructive previews** and contextual chat bubbles |
+| **"This Exact Line is for You"** | User screenshots lyrics or manually types timestamps ("listen from 1:42") | **Timestamp Lyric Highlighting (Pro)** — playback begins directly at the intended line |
+| **Typing Fatigue** | Receiver has to type a full reply to acknowledge a 3-minute track | **Instant 1-Tap Emoji Reactions** directly on song bubbles |
 
 ---
 
-## 🗺️ Future Scope
+## 🔄 User Journey & Product Flow
 
-- **Group Tuning** — share a song to a group, everyone reacts simultaneously
-- **Mood Playlists** — auto-generate playlists from Tuning history
-- **Spotify Wrapped Integration** — "songs you sent most this year"
-- **Now Playing Visibility** — see what friends are listening to live
-
----
-
-## 🛠️ Tech
-
-Built with Vite + TypeScript + React.
-
-## 📄 Docs
-
-- [Product Requirements & KPI Document](./Tuning_Product_Requirements.md) — goals, user stories, features, metrics & targets
-- [Database Schema](./schema.sql) — data model for Users, Songs_Meta, and Tuning_Logs
+```mermaid
+flowchart LR
+    A["🎧 Spotify Player"] -->|"Tap ⋯ Menu"| B["💬 Chat via Tuning"]
+    B --> C{"Choose Context"}
+    C -->|"Direct Message"| D["Send Song Card"]
+    C -->|"Highlight Lyric (Pro)"| E["Timestamped Line Share"]
+    D --> F["📱 Chat Room"]
+    E --> F
+    F -->|"1-Tap Emoji Reaction"| G["🔥 Low-friction Engagement"]
+    F -->|"Tap Play"| H["Synchronized Lyric Playback"]
+```
 
 ---
 
-*This is a product concept portfolio project. Not affiliated with Spotify AB.*
+## 🧪 Quick 30-Second Live Prototype Walkthrough
+You can test the functional prototype live at **[ashokkumarone.github.io/Tuning-Music](https://ashokkumarone.github.io/Tuning-Music/)**:
+
+1. **Explore the Player:** Browse songs, hit play, and inspect the synchronized lyrics view.
+2. **Test Tuning Share:** Tap the **⋯** menu or the message button to trigger the Tuning conversation drawer.
+3. **Experience Timestamp Sharing:** Select a specific lyric timestamp to experience how receiver playback synchronizes.
+4. **Low-Friction Reaction:** Test one-tap emoji reactions without opening a virtual keyboard.
+
+---
+
+## 💎 Freemium Monetization Architecture
+
+| Feature | Free Tier | Pro Tier (₹99/mo / $1.99) | Strategic PM Rationale |
+| :--- | :---: | :---: | :--- |
+| **Native Song Sharing** | ✅ | ✅ | **Acquisition engine:** Drives organic network effect |
+| **Instant Emoji Reactions** | ✅ | ✅ | **Retention engine:** Removes keyboard friction |
+| **Shared Chat Themes** | ✅ | ✅ | Personalization & emotional attachment |
+| **Timestamp Lyric Sharing** | ❌ | ✅ | **Conversion driver:** Power feature for expressive sharing |
+| **Emotion Buckets** | ❌ | ✅ | Curated emotional tags for songs |
+| **Ad-Free Social Experience** | ❌ | ✅ | Standard monetization baseline |
+
+---
+
+## ⚔️ Competitive Landscape & Differentiation
+
+| Dimension | WhatsApp / iMessage Share | Apple Music SharePlay | Instagram Music Stickers | Tuning (Our Concept) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Context** | External link; no player integration | Synchronized call (heavyweight) | 15s ephemeral story | **Integrated chat layer directly inside Spotify** |
+| **Effort** | High (Switch apps + copy link) | High (Requires FaceTime call) | Medium (Story editor) | **Low (1-tap in-stream sharing)** |
+| **Lyric Highlighting** | ❌ None | ❌ None | ⚠️ Static text only | **✅ Dynamic timestamp playback** |
+| **Reaction Loop** | Generic text or basic emoji | Audio chatter | DM response only | **Song-specific music emoji reactions** |
+
+---
+
+## 📊 Key Product Metrics & Target KPIs
+
+| KPI Metric | Target | Strategic Significance |
+| :--- | :--- | :--- |
+| **Daily Active Sharers (DAS)** | **20% of DAU** | Measures adoption of the primary sharing loop |
+| **Reaction Velocity** | **40%+** within 5 mins | Validates the low-friction communication hypothesis |
+| **Lyric Timestamp Usage** | **15% weekly** | Proves willingness to pay for emotional granularity |
+| **Free ➔ Pro Conversion** | **5% in 60 days** | Validates freemium revenue sustainability |
+| **Viral Coefficient ($K$)** | **> 1.2** | Ensures organic, non-paid social growth loop |
+
+---
+
+## 📁 Repository Structure & Documentation
+
+- 📄 **[Product Requirements Document (PRD)](./Tuning_Product_Requirements.md):** Deep-dive into user stories, technical constraints, phase rollouts, and KPI frameworks.
+- 🗄️ **[Database Architecture (schema.sql)](./schema.sql):** Production-ready schema covering `Users`, `Songs_Meta`, and `Tuning_Logs`.
+- 💻 **`src/`:** Fully modular React 19 + TypeScript implementation with interactive phone container.
+
+---
+
+*Concept created by [Ashokkumar S](https://linkedin.com/in/ashokkumarone) · Portfolio: [ashokkumarone.github.io](https://ashokkumarone.github.io/)*
