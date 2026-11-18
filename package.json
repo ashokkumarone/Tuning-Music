@@ -1,7 +1,7 @@
 {
-  "name": "react-example",
+  "name": "tuning-music",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,5 +24,8 @@
     "tailwindcss": "^4.1.14",
     "typescript": "~5.8.2",
     "vite": "^6.2.3"
-  }
+  },
+  "description": "Tuning \u2014 A Musical Language for Social Communication on Spotify",
+  "author": "Ashokkumar S (ashokkumarone)",
+  "homepage": "https://ashokkumarone.github.io/Tuning-Music/"
 }
