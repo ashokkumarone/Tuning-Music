@@ -625,11 +625,11 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
   };
 
   return (
-    <div className={`w-full h-full relative overflow-hidden flex flex-col justify-between select-none transition-colors duration-200 ${isDark ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
+    <div className={`w-full h-full relative overflow-y-auto overflow-x-hidden flex flex-col justify-between select-none transition-colors duration-200 ${isDark ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
       <div className="w-full h-full relative overflow-hidden flex flex-col justify-between">
         
         {/* Dynamic Content Area - Each view rendered in its own scroll container */}
-        <div className="flex-1 min-h-0 relative overflow-hidden">
+        <div className="flex-1 min-h-0 relative overflow-y-auto overflow-x-hidden">
 
           {/* ======================================================== */}
           {/* 1. HOME SCREEN (SCREEN 1) */}
@@ -640,9 +640,7 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <h1 className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>Tuning</h1>
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
-                    Social
-                  </span>
+
                 </div>
                 <div className="flex items-center gap-2">
                   <button
@@ -908,9 +906,7 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <h1 className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>Tuning</h1>
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
-                    Social
-                  </span>
+
                 </div>
                 <div className="flex items-center gap-2">
                   <button
