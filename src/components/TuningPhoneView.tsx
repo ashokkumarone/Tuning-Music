@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Bell, 
   MessageSquare, 
@@ -109,6 +109,19 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
 }) => {
   // Mobile active screen tab: 'home' | 'tuning_list' | 'chat_friend' | 'now_playing'
   const [activeScreen, setActiveScreen] = useState<'home' | 'tuning_list' | 'chat_friend' | 'now_playing'>('home');
+  const [showTour, setShowTour] = useState<boolean>(false);
+  const [tourStep, setTourStep] = useState<number>(1);
+
+  useEffect(() => {
+    try {
+      const seen = localStorage.getItem('tuning_tour_completed');
+      if (!seen) {
+        setShowTour(true);
+      }
+    } catch {
+      // LocalStorage fallback
+    }
+  }, []);
   const [categoryFilter, setCategoryFilter] = useState<string>('All');
   
   // Music Player Enhanced States
