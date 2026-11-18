@@ -424,7 +424,7 @@ export default function App() {
 
   return (
     <div className="h-screen w-screen bg-black overflow-hidden font-sans text-neutral-100 flex items-center justify-center">
-      <div className="w-full max-w-lg h-full relative overflow-hidden flex flex-col justify-between bg-black text-white shadow-2xl">
+      <div className="w-full max-w-lg h-full relative overflow-y-auto overflow-x-hidden flex flex-col justify-between bg-black text-white shadow-2xl">
         <TuningPhoneView
           songs={songs}
           currentSong={currentSong || songs[0]}
