@@ -1,6 +1,8 @@
 {
-  "name": "Spotify SoundRoom & Chat",
-  "description": "Spotify-inspired music player with live music room chat, synchronized listening, lyrics, and AI music assistant.",
+  "name": "Tuning \u2014 Speak in Songs",
+  "description": "A musical communication layer on top of Spotify with timestamped lyric sharing, synchronous listening, and low-friction reactions.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
