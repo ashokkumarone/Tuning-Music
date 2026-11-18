@@ -29,7 +29,7 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // 3. Live SoundRoom Chat State
-  const [activeRoomId, setActiveRoomId] = useState<string>('room-tamizh');
+  const [activeRoomId, setActiveRoomId] = useState<string>('room-global-hits');
   const [roomMessages, setRoomMessages] = useState<Record<string, ChatMessage[]>>(INITIAL_CHAT_MESSAGES);
   const [isChatOpen, setIsChatOpen] = useState<boolean>(true);
   const [isAiLoading, setIsAiLoading] = useState<boolean>(false);
@@ -384,13 +384,13 @@ export default function App() {
     } else {
       // Ambient live listener auto-reply in social rooms after 1.5s
       setTimeout(() => {
-        const botNames = ['Priya R', 'Kumar V', 'Alex M', 'Anitha S'];
+        const botNames = ['Marcus Cole', 'Sarah Jenkins', 'Alex Miller', 'Elena Rostova'];
         const randomName = botNames[Math.floor(Math.random() * botNames.length)];
         const ambientReplies = [
-          'Nice recommendation! Adding to my playlist ❤️',
-          'Vibing to this track right now 🚀',
-          'Super line pa! Truly matches the room mood ✨',
-          'Love this music vibe! Whistle podu 🎶',
+          'This chorus hits so hard! Adding to favorites ❤️',
+          'The melody at 1:12 is pure magic ✨',
+          'Sending this exact lyric to my best friend 🎶',
+          'Such a chill vibe for late night listening 🌙',
         ];
         const randomReply = ambientReplies[Math.floor(Math.random() * ambientReplies.length)];
 
@@ -423,25 +423,72 @@ export default function App() {
   const likedCount = songs.filter((s) => s.isLiked).length;
 
   return (
-    <div className="h-screen w-screen bg-black overflow-hidden font-sans text-neutral-100 flex items-center justify-center">
-      <TuningPhoneView
-        songs={songs}
-        currentSong={currentSong || songs[0]}
-        isPlaying={isPlaying}
-        onPlaySong={handlePlaySong}
-        onTogglePlay={handleTogglePlay}
-        onToggleLikeSong={handleToggleLikeSong}
-        onShareSongToChat={handleShareSongToChat}
-        currentTime={currentTime}
-        duration={duration}
-        onSeek={handleSeek}
-        onNextSong={handleNextSong}
-        onPrevSong={handlePrevSong}
-        volume={volume}
-        isMuted={isMuted}
-        onVolumeChange={setVolume}
-        onToggleMute={() => setIsMuted(!isMuted)}
-      />
+    <div className="min-h-screen w-full bg-neutral-950 flex flex-col items-center justify-center p-0 sm:py-6 sm:px-4 relative overflow-hidden font-sans text-neutral-100">
+      {/* Ambient Background Glow for Desktop */}
+      <div className="hidden sm:block absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="hidden sm:block absolute -bottom-40 -right-40 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Desktop Top Header Bar */}
+      <header className="hidden sm:flex items-center justify-between w-full max-w-[420px] mb-3 px-2 z-20">
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-cyan-500 to-violet-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <span className="text-white text-xs font-black">T</span>
+          </div>
+          <div>
+            <h1 className="text-xs font-extrabold tracking-tight text-white flex items-center gap-1.5">
+              TUNING <span className="text-[9px] font-semibold px-1.5 py-0.5 rounded bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">Concept</span>
+            </h1>
+            <p className="text-[10px] text-neutral-400 font-medium">By Ashokkumar S · Associate PM</p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 text-[10px]">
+          <a
+            href="https://github.com/ashokkumarone/Tuning-Music"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2.5 py-1 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-300 font-medium transition border border-neutral-700/60"
+          >
+            GitHub ↗
+          </a>
+          <a
+            href="https://github.com/ashokkumarone/Tuning-Music/blob/main/Tuning_Product_Requirements.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2.5 py-1 rounded-full bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 font-medium transition border border-cyan-500/30"
+          >
+            PRD ↗
+          </a>
+        </div>
+      </header>
+
+      {/* Phone Container */}
+      <div className="w-full sm:max-w-[420px] h-screen sm:h-[88vh] sm:max-h-[860px] bg-black sm:rounded-[48px] sm:border-[8px] sm:border-neutral-800/90 shadow-[0_25px_70px_rgba(0,0,0,0.85)] relative overflow-hidden flex flex-col justify-between">
+        {/* iPhone Dynamic Island Mockup on Desktop */}
+        <div className="hidden sm:flex absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-50 items-center justify-between px-3">
+          <div className="w-2.5 h-2.5 rounded-full bg-neutral-900 border border-neutral-800" />
+          <div className="w-2 h-2 rounded-full bg-cyan-900/60" />
+        </div>
+
+        <TuningPhoneView
+          songs={songs}
+          currentSong={currentSong || songs[0]}
+          isPlaying={isPlaying}
+          onPlaySong={handlePlaySong}
+          onTogglePlay={handleTogglePlay}
+          onToggleLikeSong={handleToggleLikeSong}
+          onShareSongToChat={handleShareSongToChat}
+          currentTime={currentTime}
+          duration={duration}
+          onSeek={handleSeek}
+          onNextSong={handleNextSong}
+          onPrevSong={handlePrevSong}
+          volume={volume}
+          isMuted={isMuted}
+          onVolumeChange={setVolume}
+          onToggleMute={() => setIsMuted(!isMuted)}
+        />
+      </div>
     </div>
   );
 }
