@@ -230,28 +230,30 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
     },
   ];
 
-  // Per-contact chat message history map
+  // Per-contact chat message history map (All-English hits with timestamps & lyric quotes)
   const [messagesByContact, setMessagesByContact] = useState<Record<string, ChatMessageCard[]>>({
     riya: [
       {
         id: 'msg-r1',
         sender: 'friend',
-        songTitle: 'Kannana Kanne',
-        artistAlbum: 'D. Imman • Viswasam',
+        songTitle: 'Birds of a Feather',
+        artistAlbum: 'Billie Eilish • HIT ME HARD AND SOFT',
         cardColor: 'bg-rose-500',
         iconType: 'mic',
+        lyricQuote: "I want you to stay 'til I'm in the grave (0:45)",
         timestamp: '09:15 AM',
         reactions: [{ emoji: '❤️', count: 1 }],
       },
       {
         id: 'msg-r2',
         sender: 'me',
-        songTitle: 'Kadhal Anukkal',
-        artistAlbum: 'A.R. Rahman • Enthiran',
-        cardColor: 'bg-indigo-600',
-        iconType: 'guitar',
+        songTitle: 'Die With A Smile',
+        artistAlbum: 'Lady Gaga & Bruno Mars',
+        cardColor: 'bg-purple-600',
+        iconType: 'piano',
+        lyricQuote: "If the world was ending, I'd wanna be next to you (1:12)",
         timestamp: '09:28 AM',
-        reactions: [],
+        reactions: [{ emoji: '✨', count: 1 }],
       },
       {
         id: 'msg-r3',
@@ -260,26 +262,29 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
         artistAlbum: 'Taylor Swift • Lover',
         cardColor: 'bg-pink-500',
         iconType: 'guitar',
+        lyricQuote: "I love you, ain't that the worst thing you ever heard? (2:10)",
         timestamp: '10:23 AM',
         reactions: [],
       },
       {
         id: 'msg-r4',
         sender: 'me',
-        songTitle: 'Perfect',
-        artistAlbum: 'Ed Sheeran • Divide',
-        cardColor: 'bg-sky-500',
+        songTitle: 'Espresso',
+        artistAlbum: 'Sabrina Carpenter • Short n\' Sweet',
+        cardColor: 'bg-amber-500',
         iconType: 'piano',
+        lyricQuote: "Say you can't sleep, baby, I know (0:26)",
         timestamp: '10:35 AM',
-        reactions: [{ emoji: '😍', count: 1 }],
+        reactions: [{ emoji: '🔥', count: 1 }],
       },
       {
         id: 'msg-r5',
         sender: 'friend',
-        songTitle: 'Die With A Smile',
-        artistAlbum: 'Lady Gaga & Bruno Mars',
-        cardColor: 'bg-purple-600',
+        songTitle: 'As It Was',
+        artistAlbum: "Harry Styles • Harry's House",
+        cardColor: 'bg-sky-500',
         iconType: 'mic',
+        lyricQuote: "You know it's not the same as it was (1:05)",
         timestamp: '10:50 AM',
         reactions: [],
       },
@@ -288,10 +293,11 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
       {
         id: 'msg-k1',
         sender: 'friend',
-        songTitle: 'Hukum - Jailer',
-        artistAlbum: 'Anirudh Ravichander • Jailer',
+        songTitle: 'Save Your Tears',
+        artistAlbum: 'The Weeknd • After Hours',
         cardColor: 'bg-amber-600',
         iconType: 'guitar',
+        lyricQuote: "Take me back 'cause I wanna stay (1:30)",
         timestamp: 'Yesterday 04:10 PM',
         reactions: [{ emoji: '🔥', count: 1 }],
       },
@@ -302,112 +308,101 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
         artistAlbum: 'Imagine Dragons • Evolve',
         cardColor: 'bg-indigo-600',
         iconType: 'piano',
+        lyricQuote: "Pain! You made me a believer (0:52)",
         timestamp: 'Yesterday 04:15 PM',
         reactions: [],
       },
       {
         id: 'msg-k3',
         sender: 'friend',
-        songTitle: 'Neeye Oli',
-        artistAlbum: 'Santhosh Narayanan • Sarpatta',
+        songTitle: 'Sunflower',
+        artistAlbum: 'Post Malone & Swae Lee',
         cardColor: 'bg-emerald-600',
         iconType: 'mic',
+        lyricQuote: "You're a sunflower, I think your love would be too much (1:24)",
         timestamp: 'Yesterday 05:00 PM',
-        reactions: [],
+        reactions: [{ emoji: '🎵', count: 1 }],
       },
       {
         id: 'msg-k4',
         sender: 'me',
-        songTitle: 'Naa Ready',
-        artistAlbum: 'Anirudh Ravichander • Leo',
+        songTitle: 'Counting Stars',
+        artistAlbum: 'OneRepublic • Native',
         cardColor: 'bg-rose-600',
         iconType: 'guitar',
+        lyricQuote: "No more counting dollars, we'll be counting stars (0:45)",
         timestamp: 'Yesterday 05:30 PM',
-        reactions: [{ emoji: '🔥', count: 1 }],
+        reactions: [{ emoji: '⚡', count: 1 }],
       },
     ],
     priya: [
       {
         id: 'msg-p1',
         sender: 'friend',
-        songTitle: 'As It Was',
-        artistAlbum: "Harry Styles • Harry's House",
+        songTitle: 'Viva La Vida',
+        artistAlbum: 'Coldplay • Viva La Vida',
         cardColor: 'bg-pink-500',
         iconType: 'piano',
+        lyricQuote: "I hear Jerusalem bells are ringing (1:45)",
         timestamp: 'Yesterday 02:15 PM',
-        reactions: [],
+        reactions: [{ emoji: '🎻', count: 1 }],
       },
       {
         id: 'msg-p2',
         sender: 'me',
-        songTitle: 'Enjoy Enjaami',
-        artistAlbum: 'Dhee & Arivu • Santhosh N',
+        songTitle: 'Levitating',
+        artistAlbum: 'Dua Lipa • Future Nostalgia',
         cardColor: 'bg-emerald-500',
         iconType: 'mic',
+        lyricQuote: "You want me, I want you, baby (0:35)",
         timestamp: 'Yesterday 02:30 PM',
         reactions: [{ emoji: '🎵', count: 1 }],
       },
       {
         id: 'msg-p3',
         sender: 'friend',
-        songTitle: 'Espresso',
-        artistAlbum: 'Sabrina Carpenter',
+        songTitle: 'Flowers',
+        artistAlbum: 'Miley Cyrus • Endless Summer',
         cardColor: 'bg-yellow-500',
         iconType: 'guitar',
+        lyricQuote: "I can buy myself flowers, write my name in the sand (0:38)",
         timestamp: 'Yesterday 03:00 PM',
-        reactions: [],
+        reactions: [{ emoji: '❤️', count: 1 }],
       },
     ],
     vikram: [
       {
         id: 'msg-v1',
         sender: 'friend',
-        songTitle: 'Arabic Kuthu',
-        artistAlbum: 'Anirudh Ravichander • Beast',
+        songTitle: 'Blinding Lights',
+        artistAlbum: 'The Weeknd • After Hours',
         cardColor: 'bg-cyan-600',
         iconType: 'mic',
+        lyricQuote: "I said, ooh, I'm blinded by the lights (1:22)",
         timestamp: 'Mon 11:10 AM',
-        reactions: [],
+        reactions: [{ emoji: '🔥', count: 1 }],
       },
       {
         id: 'msg-v2',
         sender: 'me',
-        songTitle: 'Fear Song',
-        artistAlbum: 'Anirudh Ravichander • Devara',
+        songTitle: 'Starboy',
+        artistAlbum: 'The Weeknd • Starboy',
         cardColor: 'bg-indigo-600',
         iconType: 'guitar',
+        lyricQuote: "Look what you've done, I'm a starboy (1:02)",
         timestamp: 'Mon 11:45 AM',
-        reactions: [{ emoji: '🔥', count: 1 }],
-      },
-      {
-        id: 'msg-v3',
-        sender: 'friend',
-        songTitle: 'Badass',
-        artistAlbum: 'Anirudh Ravichander • Leo',
-        cardColor: 'bg-slate-800',
-        iconType: 'piano',
-        timestamp: 'Mon 12:15 PM',
-        reactions: [],
-      },
-      {
-        id: 'msg-v4',
-        sender: 'me',
-        songTitle: 'Die With A Smile',
-        artistAlbum: 'Lady Gaga & Bruno Mars',
-        cardColor: 'bg-sky-500',
-        iconType: 'mic',
-        timestamp: 'Mon 12:50 PM',
-        reactions: [],
+        reactions: [{ emoji: '⚡', count: 1 }],
       },
     ],
     sneha: [
       {
         id: 'msg-s1',
         sender: 'friend',
-        songTitle: 'Ordinary Person',
-        artistAlbum: 'Anirudh Ravichander • Leo',
+        songTitle: 'Someone Like You',
+        artistAlbum: 'Adele • 21',
         cardColor: 'bg-yellow-500',
         iconType: 'guitar',
+        lyricQuote: "Never mind, I'll find someone like you (1:15)",
         timestamp: 'Sun 06:20 PM',
         reactions: [],
       },
@@ -418,16 +413,18 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
         artistAlbum: 'One Direction • Four',
         cardColor: 'bg-purple-600',
         iconType: 'piano',
+        lyricQuote: "We're only getting older, baby (0:55)",
         timestamp: 'Sun 06:45 PM',
         reactions: [{ emoji: '🥺', count: 1 }],
       },
       {
         id: 'msg-s3',
         sender: 'friend',
-        songTitle: 'Heeriye',
-        artistAlbum: 'Jasleen Royal & Arijit Singh',
+        songTitle: 'Bad Guy',
+        artistAlbum: 'Billie Eilish • WHEN WE ALL FALL ASLEEP',
         cardColor: 'bg-rose-500',
         iconType: 'mic',
+        lyricQuote: "I'm that bad type, make your mama sad type (0:40)",
         timestamp: 'Sun 07:10 PM',
         reactions: [],
       },
@@ -436,52 +433,35 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
       {
         id: 'msg-a1',
         sender: 'friend',
-        songTitle: 'Levitating',
-        artistAlbum: 'Dua Lipa • Future Nostalgia',
+        songTitle: 'Shape of You',
+        artistAlbum: 'Ed Sheeran • Divide',
         cardColor: 'bg-emerald-600',
         iconType: 'piano',
+        lyricQuote: "I'm in love with the shape of you (0:50)",
         timestamp: 'Sat 08:10 PM',
         reactions: [],
       },
       {
         id: 'msg-a2',
         sender: 'me',
-        songTitle: 'Kaavaalaa',
-        artistAlbum: 'Anirudh Ravichander • Jailer',
+        songTitle: 'Yellow',
+        artistAlbum: 'Coldplay • Parachutes',
         cardColor: 'bg-amber-500',
         iconType: 'mic',
+        lyricQuote: "Look at the stars, look how they shine for you (0:45)",
         timestamp: 'Sat 08:25 PM',
         reactions: [{ emoji: '🎵', count: 1 }],
       },
       {
         id: 'msg-a3',
         sender: 'friend',
-        songTitle: 'Illuminati',
-        artistAlbum: 'Sushin Shyam • Aavesham',
+        songTitle: 'Stay',
+        artistAlbum: 'The Kid LAROI & Justin Bieber',
         cardColor: 'bg-indigo-600',
         iconType: 'guitar',
+        lyricQuote: "I do the same thing I told you that I never would (0:30)",
         timestamp: 'Sat 08:40 PM',
         reactions: [{ emoji: '🔥', count: 1 }],
-      },
-      {
-        id: 'msg-a4',
-        sender: 'me',
-        songTitle: 'Starboy',
-        artistAlbum: 'The Weeknd • Starboy',
-        cardColor: 'bg-purple-600',
-        iconType: 'piano',
-        timestamp: 'Sat 09:00 PM',
-        reactions: [],
-      },
-      {
-        id: 'msg-a5',
-        sender: 'friend',
-        songTitle: 'Rolex Theme',
-        artistAlbum: 'Anirudh Ravichander • Vikram',
-        cardColor: 'bg-neutral-800',
-        iconType: 'guitar',
-        timestamp: 'Sat 09:30 PM',
-        reactions: [],
       },
     ],
   });
@@ -632,10 +612,8 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
   };
 
   return (
-    <div className={`w-full h-screen flex justify-center select-none overflow-hidden transition-colors duration-200 ${isDark ? 'bg-neutral-950 text-white' : 'bg-sky-50/70 text-slate-900'}`}>
-      
-      {/* Clean Full Screen Container without Phone Bezel or Status Bar */}
-      <div className={`w-full max-w-2xl h-full relative overflow-hidden flex flex-col justify-between shadow-2xl transition-colors duration-200 ${isDark ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
+    <div className={`w-full h-full relative overflow-hidden flex flex-col justify-between select-none transition-colors duration-200 ${isDark ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
+      <div className="w-full h-full relative overflow-hidden flex flex-col justify-between">
         
         {/* Dynamic Content Area - Each view rendered in its own scroll container */}
         <div className="flex-1 min-h-0 relative overflow-hidden">
@@ -647,8 +625,21 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
             <div className="space-y-5 pt-1">
               {/* Header: Tuning + Notification & Profile Avatar */}
               <div className="flex items-center justify-between">
-                <h1 className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>Tuning</h1>
                 <div className="flex items-center gap-2.5">
+                  <h1 className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>Tuning</h1>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+                    Social
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => { setTourStep(1); setShowTour(true); }}
+                    className="px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-violet-500/20 hover:from-cyan-500/30 hover:to-violet-500/30 text-cyan-300 text-[10px] font-bold border border-cyan-500/40 flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+                    title="How Tuning Works (Interactive Guide)"
+                  >
+                    <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
+                    <span>Guide</span>
+                  </button>
                   <button className={`p-2 rounded-full transition relative ${isDark ? 'hover:bg-neutral-800 text-neutral-300' : 'hover:bg-sky-100 text-slate-700'}`} title="Notifications">
                     <Bell className="w-5 h-5" />
                     <span className="w-2 h-2 bg-sky-400 rounded-full absolute top-2 right-2"></span>
@@ -902,8 +893,21 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
             <div className="space-y-4 pt-1">
               {/* Header: Tuning + Notification & Profile Avatar */}
               <div className="flex items-center justify-between">
-                <h1 className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>Tuning</h1>
                 <div className="flex items-center gap-2.5">
+                  <h1 className={`text-2xl sm:text-3xl font-serif font-bold tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>Tuning</h1>
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+                    Social
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => { setTourStep(1); setShowTour(true); }}
+                    className="px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-violet-500/20 hover:from-cyan-500/30 hover:to-violet-500/30 text-cyan-300 text-[10px] font-bold border border-cyan-500/40 flex items-center gap-1.5 transition active:scale-95 shadow-sm"
+                    title="How Tuning Works (Interactive Guide)"
+                  >
+                    <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
+                    <span>Guide</span>
+                  </button>
                   <button className={`p-2 rounded-full transition relative ${isDark ? 'hover:bg-neutral-800 text-neutral-300' : 'hover:bg-sky-100 text-slate-700'}`} title="Notifications">
                     <Bell className="w-5 h-5" />
                     <span className="w-2 h-2 bg-sky-400 rounded-full absolute top-2 right-2"></span>
@@ -2096,6 +2100,118 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
                 <Trash2 className="w-4 h-4 text-rose-500" />
                 <span>Delete Chat</span>
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+      {/* ======================================================== */}
+      {/* 6. INTERACTIVE ONBOARDING / COACHMARK TOUR MODAL */}
+      {/* ======================================================== */}
+      {showTour && (
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 select-none">
+          <div className={`rounded-3xl max-w-sm w-full p-6 space-y-5 shadow-2xl relative border ${
+            isDark ? 'bg-neutral-900 border-cyan-500/30 text-white' : 'bg-white border-cyan-300 text-slate-900'
+          }`}>
+            {/* Header with Step Indicator */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-cyan-400">
+                  Feature Tour • Step {tourStep} of 4
+                </span>
+              </div>
+              <button
+                onClick={() => {
+                  setShowTour(false);
+                  try { localStorage.setItem('tuning_tour_completed', 'true'); } catch {}
+                }}
+                className={`p-1 rounded-full text-xs transition ${isDark ? 'text-neutral-400 hover:text-white hover:bg-neutral-800' : 'text-slate-400 hover:text-slate-900 hover:bg-sky-100'}`}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Tour Step Content */}
+            {tourStep === 1 && (
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/30">
+                  <Music className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-base font-extrabold">Welcome to Tuning 🎵</h3>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  What if music was your message? Instead of copying links into WhatsApp, Tuning lets you share songs directly, react without typing, and send exact lyric moments.
+                </p>
+              </div>
+            )}
+
+            {tourStep === 2 && (
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/30">
+                  <MessageSquare className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-base font-extrabold">1. Chat via Tuning 💬</h3>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  Tap the <span className="text-cyan-400 font-bold">"Tuning"</span> tab in the bottom dock to open your music inbox. Chat with friends using song cards instead of standard text.
+                </p>
+              </div>
+            )}
+
+            {tourStep === 3 && (
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-violet-500 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-violet-500/30">
+                  <Mic2 className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-base font-extrabold">2. Lyric Timestamp Sharing (Pro) ⏱️</h3>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  Want to say <span className="italic text-cyan-300">"This exact line is for you"</span>? Tap on any synchronized lyric line to send a timestamp share. Your friend's playback starts right at that line!
+                </p>
+              </div>
+            )}
+
+            {tourStep === 4 && (
+              <div className="space-y-3">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-400 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-rose-500/30">
+                  <Smile className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-base font-extrabold">3. 1-Tap Emoji Reactions 😄</h3>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  No typing fatigue. React to any shared song with expressive, animated music reactions in a single tap.
+                </p>
+              </div>
+            )}
+
+            {/* Tour Navigation Buttons */}
+            <div className="flex items-center justify-between pt-2">
+              <button
+                onClick={() => {
+                  setShowTour(false);
+                  try { localStorage.setItem('tuning_tour_completed', 'true'); } catch {}
+                }}
+                className="text-xs text-neutral-400 hover:text-white font-semibold transition"
+              >
+                Skip Tour
+              </button>
+
+              {tourStep < 4 ? (
+                <button
+                  onClick={() => setTourStep((prev) => prev + 1)}
+                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-violet-600 text-white text-xs font-bold shadow-lg shadow-cyan-500/25 hover:opacity-95 active:scale-95 transition"
+                >
+                  Next ➔
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setShowTour(false);
+                    try { localStorage.setItem('tuning_tour_completed', 'true'); } catch {}
+                  }}
+                  className="px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 text-black text-xs font-black shadow-lg shadow-cyan-400/30 hover:opacity-95 active:scale-95 transition"
+                >
+                  Start Exploring 🎉
+                </button>
+              )}
             </div>
           </div>
         </div>
