@@ -643,14 +643,7 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
 
                 </div>
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => { setTourStep(1); setShowTour(true); }}
-                    className="px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-violet-500/20 hover:from-cyan-500/30 hover:to-violet-500/30 text-cyan-300 text-[10px] font-bold border border-cyan-500/40 flex items-center gap-1.5 transition active:scale-95 shadow-sm"
-                    title="How Tuning Works (Interactive Guide)"
-                  >
-                    <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
-                    <span>Guide</span>
-                  </button>
+
                   <button className={`p-2 rounded-full transition relative ${isDark ? 'hover:bg-neutral-800 text-neutral-300' : 'hover:bg-sky-100 text-slate-700'}`} title="Notifications">
                     <Bell className="w-5 h-5" />
                     <span className="w-2 h-2 bg-sky-400 rounded-full absolute top-2 right-2"></span>
@@ -909,14 +902,7 @@ export const TuningPhoneView: React.FC<TuningPhoneViewProps> = ({
 
                 </div>
                 <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => { setTourStep(1); setShowTour(true); }}
-                    className="px-2.5 py-1 rounded-full bg-gradient-to-r from-cyan-500/20 to-violet-500/20 hover:from-cyan-500/30 hover:to-violet-500/30 text-cyan-300 text-[10px] font-bold border border-cyan-500/40 flex items-center gap-1.5 transition active:scale-95 shadow-sm"
-                    title="How Tuning Works (Interactive Guide)"
-                  >
-                    <Sparkles className="w-3 h-3 text-cyan-400 animate-pulse" />
-                    <span>Guide</span>
-                  </button>
+
                   <button className={`p-2 rounded-full transition relative ${isDark ? 'hover:bg-neutral-800 text-neutral-300' : 'hover:bg-sky-100 text-slate-700'}`} title="Notifications">
                     <Bell className="w-5 h-5" />
                     <span className="w-2 h-2 bg-sky-400 rounded-full absolute top-2 right-2"></span>
